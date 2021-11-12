@@ -30,5 +30,35 @@ namespace SnakeAndLadder
             this.playerPosition = playerPosition + Roll;
             Console.WriteLine("The value when Dice thrown is: " + playerPosition);
         }
+        
+        // UseCase-3 : Option Check to play or not
+
+           public int roll()
+           {
+               int roll = rand.Next(1, 7);
+               return roll;
+           }
+           public void rolling()
+           {
+               int Roll = this.roll();
+               int Check = rand.Next(0, 3);
+               switch (Check)
+               {
+                   case NO_PLAY:
+                       this.playerPosition += NO_PLAY;
+                       break;
+                   case LADDER:
+                       this.playerPosition += Roll;
+                       break;
+                   case SNAKE:
+                       this.playerPosition += Roll;
+                       break;
+                   default:
+                       //Console.WriteLine("dicenumber must be between 1 to 6");
+                       break;
+               }
+               Console.WriteLine("player position is " + this.playerPosition);
+           }
     }
+
 }

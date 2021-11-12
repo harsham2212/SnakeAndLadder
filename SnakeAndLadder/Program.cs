@@ -11,6 +11,8 @@ namespace SnakeAndLadder
             playerl.diceRoll();
             GamePlay Roll = new GamePlay();
             Roll.play();
+            GamePlay option = new GamePlay();
+            option.rolling();
         }
     }
 }
