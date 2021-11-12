@@ -13,6 +13,8 @@ namespace SnakeAndLadder
             Roll.play();
             GamePlay option = new GamePlay();
             option.rolling();
+            GamePlay repeatiton = new GamePlay();
+            repeatiton.repeat();
         }
     }
 }
