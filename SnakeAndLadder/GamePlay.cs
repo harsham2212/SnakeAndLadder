@@ -11,8 +11,9 @@ namespace SnakeAndLadder
         public const int NO_PLAY = 0, SNAKE = 1, LADDER = 2, WIN = 100, START = 0;
         public int playerPosition = 0;
         public int standingPositionofPlayer = 0;
+        public int count = 0;
         Random rand = new Random();
-        
+
 
         //public void diceRoll()
         //{
@@ -92,45 +93,87 @@ namespace SnakeAndLadder
         //                    break;
         //            }
 
-                    // UseCase-5 : Ensure the player gets to exact winning
+        // UseCase-5 : Ensure the player gets to exact winning
 
-                    public int DieRolling()
-                    {
-                        int roll = rand.Next(1, 7);
-                        return roll;
-                    }
-                    public void PlayerCheck()
-                    {
-                        while (standingPositionofPlayer < WIN)
+        //         public int DieRolling()
+        //         {
+        //             int roll = rand.Next(1, 7);
+        //             return roll;
+        //         }
+        //         public void PlayerCheck()
+        //         {
+        //             while (standingPositionofPlayer < WIN)
+        //             {
+        //                 int dieRoll = this.DieRolling();
+        //                 int option = rand.Next(0, 3);
+        //                 switch (option)
+        //                 {
+        //                     case NO_PLAY:
+        //                         break;
+        //                     case LADDER:
+        //                         this.standingPositionofPlayer += dieRoll;
+        //                         if (this.standingPositionofPlayer > WIN)
+        //                         {
+        //                             this.standingPositionofPlayer -= dieRoll;
+        //                         }
+        //                         break;
+        //                     case SNAKE:
+        //                         this.standingPositionofPlayer -= dieRoll;
+        //                         if (this.standingPositionofPlayer < START)
+        //                         {
+        //                             this.standingPositionofPlayer = START;
+        //                         }
+        //                         break;
+        //                 }
+        //                 //Console.WriteLine("The standin Position of Player is :" + this.standingPositionofPlayer + " " + "with a roll of " + dieRoll);
+        //             }
+        //             Console.WriteLine("The Player wins the Game");
+        //}
+
+        //UseCase 6: Report the number of times the dice was played to win the game and also the position after every die role
+
+
+        public int DieRolling()
+        {
+            int roll = rand.Next(1, 7);
+            return roll;
+        }
+        public void PlayerCheck()
+        {
+            while (standingPositionofPlayer < WIN)
+            {
+                int dieRoll = this.DieRolling();
+                int option = rand.Next(0, 3);
+                switch (option)
+                {
+                    case NO_PLAY:
+                        break;
+                    case LADDER:
+                        this.standingPositionofPlayer += dieRoll;
+                        if (this.standingPositionofPlayer > WIN)
                         {
-                            int dieRoll = this.DieRolling();
-                            int option = rand.Next(0, 3);
-                            switch (option)
-                            {
-                                case NO_PLAY:
-                                    break;
-                                case LADDER:
-                                    this.standingPositionofPlayer += dieRoll;
-                                    if (this.standingPositionofPlayer > WIN)
-                                    {
-                                        this.standingPositionofPlayer -= dieRoll;
-                                    }
-                                    break;
-                                case SNAKE:
-                                    this.standingPositionofPlayer -= dieRoll;
-                                    if (this.standingPositionofPlayer < START)
-                                    {
-                                        this.standingPositionofPlayer = START;
-                                    }
-                                    break;
-                            }
-                            //Console.WriteLine("The standin Position of Player is :" + this.standingPositionofPlayer + " " + "with a roll of " + dieRoll);
+                            this.standingPositionofPlayer -= dieRoll;
                         }
-                        Console.WriteLine("The Player wins the Game");
-                    }
+                        Console.WriteLine("Got Ladder");
+                        break;
+                    case SNAKE:
+                        this.standingPositionofPlayer -= dieRoll;
+                        if (this.standingPositionofPlayer < START)
+                        {
+                            this.standingPositionofPlayer = START;
+                        }
+                        Console.WriteLine("Got Snake");
+                        break;
                 }
-
+                count++;
+                Console.WriteLine("The Player Position is :" + this.standingPositionofPlayer + " " + "with a roll of " + dieRoll);
             }
+            Console.WriteLine("The number of times dice was rolled to win the Game is : " + count);
+            Console.WriteLine("The Player wins the Game");
+        }
+    }
+}
+ //}
 //        }
 //    }
 //}
